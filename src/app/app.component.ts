@@ -4,6 +4,8 @@ import { Platform } from '@ionic/angular';
 
 import { Plugins } from '@capacitor/core';
 const { SplashScreen, StatusBar } = Plugins;
+import * as firebase from 'firebase/app';
+import { firebaseConfig } from './config/credentials';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +16,7 @@ export class AppComponent {
     private platform: Platform
   ) {
     this.initializeApp();
+    firebase.initializeApp(firebaseConfig);
   }
 
   initializeApp() {
