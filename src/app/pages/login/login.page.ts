@@ -35,4 +35,30 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  async loginUser(loginForm: FormGroup): Promise<void> {
+    if (!loginForm.valid) {
+      console.log('Form is not valid yet, current value:', loginForm.value);
+    } else {
+      const email = loginForm.value.email;
+      const password = loginForm.value.password;
+      this.authService.loginUser(email, password).then(
+        () => {
+          this.loading.dismiss().then(() => {
+            this.router.navigateByUrl('home');
+          });
+        },
+        error => {
+          this.loading.dismiss().then(async () => {
+            const alert = await this.alertCtrl.create({
+              message: error.message,
+              buttons: [{ text: 'Ok', role: 'cancel' }],
+            });
+            await alert.present();
+          });
+        }
+      );
+      this.loading = await this.loadingCtrl.create();
+      await this.loading.present();
+    }
+  }
 }
