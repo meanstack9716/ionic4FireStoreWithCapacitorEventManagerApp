@@ -9,7 +9,9 @@ import { EventService } from '../../services/event/event.service';
 })
 export class EventCreatePage implements OnInit {
   constructor(private router: Router, private eventService: EventService) { }
-
+  eventName: any;
+  eventCost: number;
+  eventPrice: number;
   ngOnInit() { }
 
   createEvent(
