@@ -2,5 +2,6 @@
   "appId": "com.meanstack.eventManager",
   "appName": "ionic4FireStoreWithCapacitorEventManagerApp",
   "bundledWebRuntime": false,
-  "webDir": "www"
+  "webDir": "www",
+  "linuxAndroidStudioPath": "/opt/android-studio/bin/studio.sh"
 }
