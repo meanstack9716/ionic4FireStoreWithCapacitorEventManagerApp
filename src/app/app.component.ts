@@ -6,6 +6,7 @@ import { Plugins } from '@capacitor/core';
 const { SplashScreen, StatusBar } = Plugins;
 import * as firebase from 'firebase/app';
 import { firebaseConfig } from './config/credentials';
+import 'firebase/firestore';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ export class AppComponent {
   ) {
     this.initializeApp();
     firebase.initializeApp(firebaseConfig);
+    firebase.firestore().settings({timestampsInSnapshots: true});
   }
 
   initializeApp() {
